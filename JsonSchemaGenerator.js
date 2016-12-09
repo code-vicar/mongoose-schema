@@ -192,7 +192,10 @@ JsonSchemaGenerator.prototype.generateTypeEmbedded = function (type) {
 
 JsonSchemaGenerator.prototype.setGeneralProperties = function (property, path) {
     property.required = path.options.required === true;
+    if (path.options.title) {
+      property.title = path.options.title;
+    }
+    if (path.options.match) {
+      property.pattern = path.options.match;
+    }
 }
-
-
-

@@ -1,11 +1,15 @@
 {
-  "name": "mongoose-schema",
+  "name": "@code-vicar/mongoose-schema",
   "version": "0.0.7",
-  "description": "creates various schema from mongoose's own schema",
+  "description": "Creates various schema from mongoose's own schema",
   "main": "index.js",
   "author": {
-    "name": "Stefan Meyer"
+    "name": "Scott Vickers"
   },
+  "contributors": [
+    "Stefan Meyer",
+    "Scott Vickers"
+  ],
   "license": "MIT",
   "dependencies": {
   },
