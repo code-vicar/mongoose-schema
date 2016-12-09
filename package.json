@@ -1,6 +1,6 @@
 {
   "name": "@code-vicar/mongoose-schema",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "Creates various schema from mongoose's own schema",
   "main": "index.js",
   "author": {
