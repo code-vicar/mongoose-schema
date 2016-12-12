@@ -15,13 +15,10 @@ JsonSchemaGenerator.prototype = new AbstractSchemaGenerator();
 
 // A method used to generate a Swagger model definition for a controller
 JsonSchemaGenerator.prototype.generate = function (schema) {
-
     var definition = {};
     definition.properties = this.generateProperties(schema);
     return definition;
 }
-
-
 
 // A method used to generate a Swagger model definition for a controller
 JsonSchemaGenerator.prototype.generateSchema = function (schema) {
@@ -34,9 +31,6 @@ JsonSchemaGenerator.prototype.generateSchema = function (schema) {
     }
 
 }
-
-
-
 
 JsonSchemaGenerator.prototype.generateProperty = function (path, schema) {
     var property = {};
@@ -198,7 +192,8 @@ JsonSchemaGenerator.prototype.setGeneralProperties = function (property, path) {
     if (path.options.match) {
         property.pattern = path.options.match;
         if (path.options.match instanceof RegExp) {
-            property.pattern = path.options.match.toString();
+            var str = path.options.match.toString();
+            property.pattern = str.substring(str.indexOf('/') + 1, str.lastIndexOf('/'));
         }
     }
 }
