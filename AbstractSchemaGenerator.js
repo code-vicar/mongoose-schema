@@ -29,6 +29,11 @@ AbstractSchemaGenerator.prototype.isIncluded = function (name, options) {
 
 }
 
+AbstractSchemaGenerator.prototype.isVirtualIncluded = function (name, options) {
+    var included = this.isIncluded(name, options);
+    return (included && options.includeInJsonSchema);
+}
+
 AbstractSchemaGenerator.prototype.convertType = function (type) {
     if (typeof type === "string") {
         return type;
@@ -98,7 +103,3 @@ AbstractSchemaGenerator.prototype.findEmbeddeds = function (schema) {
     }, this);
     return embeddeds;
 }
-
-
-
-

@@ -50,14 +50,20 @@ JsonSchemaGenerator.prototype.generateProperty = function (path, schema) {
 JsonSchemaGenerator.prototype.generateProperties = function (schema) {
     var properties = {};
     Object.keys(schema.paths).forEach(function (name) {
-
         if (!this.getEmbeddedName(name) && this.isIncluded(name, schema.paths[name].options)) {
             var property = this.generateProperty(schema.paths[name], schema);
             properties[name] = property;
-
-
         }
     }, this);
+
+    if (schema.virtuals) {
+        Object.keys(schema.virtuals).forEach(function (name) {
+            if (!this.getEmbeddedName(name) && this.isVirtualIncluded(name, schema.virtuals[name].options)) {
+                var property = this.generateProperty(schema.virtuals[name], schema);
+                properties[name] = property;
+            }
+        }, this);
+    }
 
     var embeddeds = this.findEmbeddeds(schema);
     for (var key in embeddeds) {
